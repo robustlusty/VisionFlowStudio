@@ -1,0 +1,141 @@
+QMainWindow{
+
+    background:#1e1e1e;
+
+}
+
+QWidget{
+
+    background:#1e1e1e;
+
+    color:white;
+
+    font-family:Segoe UI;
+
+    font-size:10pt;
+
+}
+
+QToolBar{
+
+    background:#2b2b2b;
+
+    spacing:6px;
+
+    border:none;
+
+    padding:6px;
+
+}
+
+QToolButton{
+
+    background:transparent;
+
+    padding:8px;
+
+    border-radius:6px;
+
+}
+
+QToolButton:hover{
+
+    background:#404040;
+
+}
+
+QStatusBar{
+
+    background:#2b2b2b;
+
+}
+
+QListWidget{
+
+    background:#252526;
+
+    border:none;
+
+    outline:none;
+
+}
+
+QListWidget::item{
+
+    padding:12px;
+
+}
+
+QListWidget::item:selected{
+
+    background:#007acc;
+
+    border-radius:6px;
+
+}
+
+QListWidget::item:hover{
+
+    background:#353535;
+
+}
+
+QLabel{
+
+    background:transparent;
+
+}
+
+QFrame{
+
+    background:#252526;
+
+    border:1px solid #3a3a3a;
+
+    border-radius:8px;
+
+}
+
+QTextEdit{
+
+    background:#1b1b1b;
+
+    border:1px solid #444;
+
+    border-radius:8px;
+
+    padding:8px;
+
+}
+
+QTreeWidget{
+
+    background:#1b1b1b;
+
+    border:1px solid #444;
+
+    border-radius:8px;
+
+}
+
+QHeaderView::section{
+
+    background:#2d2d30;
+
+    padding:6px;
+
+    border:none;
+
+}
+
+#PanelTitle{
+
+font-size:16px;
+
+font-weight:bold;
+
+padding:6px;
+
+color:#ffffff;
+
+}
