@@ -1,7 +1,7 @@
 from PySide6.QtWidgets import QToolBar
 
 
-class MainToolbar(QToolBar):
+class MainToolBar(QToolBar):
 
     def __init__(self):
         super().__init__("Toolbar")
@@ -9,15 +9,12 @@ class MainToolbar(QToolBar):
         self.setMovable(False)
 
         self.addAction("New")
-
         self.addAction("Open")
-
         self.addAction("Save")
 
         self.addSeparator()
 
         self.addAction("Run")
-
         self.addAction("Stop")
 
         self.addSeparator()

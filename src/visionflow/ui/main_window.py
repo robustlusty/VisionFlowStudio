@@ -1,12 +1,18 @@
 from PySide6.QtCore import Qt
-from PySide6.QtWidgets import QHBoxLayout, QMainWindow, QSplitter, QWidget
+from PySide6.QtWidgets import (
+    QHBoxLayout,
+    QMainWindow,
+    QSplitter,
+    QWidget,
+)
 
-from visionflow.ui import workspace
-from visionflow.ui.widgets.navigation_panel import NavigationPanel
 from visionflow.ui.statusbar import MainStatusBar
-from visionflow.ui.toolbar import MainToolbar
-from visionflow.ui.workspace_manager import WorkspaceManager
+from visionflow.ui.toolbar import MainToolBar
 from visionflow.ui.theme import load_stylesheet
+
+from visionflow.ui.widgets.navigation_panel import NavigationPanel
+from visionflow.ui.workspace_manager import WorkspaceManager
+
 
 class MainWindow(QMainWindow):
 
@@ -20,8 +26,8 @@ class MainWindow(QMainWindow):
         self.setMinimumSize(1280, 800)
 
         self.setStyleSheet(load_stylesheet())
-        
-        self.addToolBar(MainToolbar())
+
+        self.addToolBar(MainToolBar())
 
         self.setStatusBar(MainStatusBar())
 
@@ -37,13 +43,28 @@ class MainWindow(QMainWindow):
 
         layout.addWidget(splitter)
 
+        # =========================
+        # Left Navigation
+        # =========================
+
         navigation = NavigationPanel()
+
         navigation.setFixedWidth(240)
 
-        splitter.addWidget(navigation)
+        # =========================
+        # Workspace
+        # =========================
 
         workspace = WorkspaceManager()
 
+        navigation.connectWorkspace(workspace)
+
+        # =========================
+        # Splitter
+        # =========================
+
+        splitter.addWidget(navigation)
+
         splitter.addWidget(workspace)
 
-        splitter.setSizes([230, 1370])
+        splitter.setSizes([240, 1360])

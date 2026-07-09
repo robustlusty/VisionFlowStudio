@@ -31,3 +31,18 @@ class WorkspaceManager(QStackedWidget):
         self.addWidget(self.settings)
 
         self.setCurrentWidget(self.prompt)
+
+    def showPage(self, page):
+
+        pages = {
+            "video": self.video,
+            "image": self.image,
+            "prompt": self.prompt,
+            "plugin": self.plugin,
+            "workflow": self.workflow,
+            "database": self.database,
+            "settings": self.settings,
+        }
+
+        if page in pages:
+            self.setCurrentWidget(pages[page])

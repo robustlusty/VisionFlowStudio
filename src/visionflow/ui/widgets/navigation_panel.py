@@ -11,27 +11,38 @@ class NavigationPanel(QWidget):
 
         layout = QVBoxLayout(self)
 
-        layout.addWidget(
-            NavigationGroup(
-                "Workspace",
-                [
-                    "Video",
-                    "Images",
-                    "Prompt",
-                ]
-            )
+        workspaceGroup = NavigationGroup(
+            "Workspace",
+            [
+                ("Video", "video"),
+                ("Images", "image"),
+                ("Prompt", "prompt"),
+            ]
         )
 
-        layout.addWidget(
-            NavigationGroup(
-                "Project",
-                [
-                    "Plugins",
-                    "Workflow",
-                    "Database",
-                    "Settings",
-                ]
-            )
+        projectGroup = NavigationGroup(
+            "Project",
+            [
+                ("Plugins", "plugin"),
+                ("Workflow", "workflow"),
+                ("Database", "database"),
+                ("Settings", "settings"),
+            ]
         )
 
+        self.groups = [
+            workspaceGroup,
+            projectGroup
+        ]
+
+        layout.addWidget(workspaceGroup)
+        layout.addWidget(projectGroup)
         layout.addStretch()
+
+    def connectWorkspace(self, workspace):
+
+        for group in self.groups:
+
+            for button in group.buttons:
+
+                button.clickedPage.connect(workspace.showPage)

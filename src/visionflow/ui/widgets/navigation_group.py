@@ -1,6 +1,6 @@
-from PySide6.QtWidgets import QWidget
 from PySide6.QtWidgets import QLabel
 from PySide6.QtWidgets import QVBoxLayout
+from PySide6.QtWidgets import QWidget
 
 from visionflow.ui.widgets.navigation_button import NavigationButton
 
@@ -12,10 +12,16 @@ class NavigationGroup(QWidget):
 
         layout = QVBoxLayout(self)
 
-        titleLabel = QLabel(title)
-        layout.addWidget(titleLabel)
+        layout.addWidget(QLabel(title))
 
-        for item in items:
-            layout.addWidget(NavigationButton(item))
+        self.buttons = []
+
+        for text, page in items:
+
+            button = NavigationButton(text, page)
+
+            self.buttons.append(button)
+
+            layout.addWidget(button)
 
         layout.addStretch()

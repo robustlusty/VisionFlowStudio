@@ -3,7 +3,7 @@ from PySide6.QtWidgets import (
     QVBoxLayout,
     QLabel,
     QTreeWidget,
-    QTreeWidgetItem
+    QTreeWidgetItem,
 )
 
 
@@ -12,24 +12,31 @@ class BatchQueue(QWidget):
     def __init__(self):
         super().__init__()
 
-        layout=QVBoxLayout(self)
+        layout = QVBoxLayout(self)
 
-        title=QLabel("Batch Queue")
+        title = QLabel("Batch Queue")
+        title.setStyleSheet("""
+            QLabel{
+                font-size:16px;
+                font-weight:bold;
+            }
+        """)
 
-        title.setObjectName("PanelTitle")
+        self.tree = QTreeWidget()
 
-        self.tree=QTreeWidget()
+        self.tree.setHeaderLabels([
+            "Task",
+            "Status"
+        ])
 
-        self.tree.setHeaderLabels(
-            ["Job","Status"]
-        )
+        self.tree.setColumnWidth(0, 220)
 
         self.tree.addTopLevelItem(
-            QTreeWidgetItem(
-                ["Waiting...","Idle"]
-            )
+            QTreeWidgetItem([
+                "No Task",
+                "Idle"
+            ])
         )
 
         layout.addWidget(title)
-
         layout.addWidget(self.tree)
